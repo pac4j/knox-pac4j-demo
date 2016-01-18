@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <servlet>
+    <servlet-name>admin</servlet-name>
+    <servlet-class>org.apache.hadoop.gateway.GatewayServlet</servlet-class>
+    <init-param>
+      <param-name>gatewayDescriptorLocation</param-name>
+      <param-value>gateway.xml</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin</servlet-name>
+    <url-pattern>/*</url-pattern>
+  </servlet-mapping>
+  <listener>
+    <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
+  </listener>
+  <session-config>
+    <session-timeout>30</session-timeout>
+    <cookie-config>
+      <http-only>true</http-only>
+      <secure>true</secure>
+    </cookie-config>
+  </session-config>
+  <context-param>
+    <param-name>principal.mapping</param-name>
+    <param-value/>
+  </context-param>
+  <context-param>
+    <param-name>group.principal.mapping</param-name>
+    <param-value/>
+  </context-param>
+  <listener>
+    <listener-class>org.apache.hadoop.gateway.services.GatewayServicesContextListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>org.apache.hadoop.gateway.filter.rewrite.api.UrlRewriteServletContextListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>rewriteDescriptorLocation</param-name>
+    <param-value>/WEB-INF/rewrite.xml</param-value>
+  </context-param>
+</web-app>
