@@ -35,6 +35,10 @@
                 <name>cas.loginUrl</name>
                 <value>https://casserverpac4j.herokuapp.com/login</value>
             </param>
+            <param>
+                <name>clientName</name>
+                <value>CasClient</value>
+            </param>
             <!--param>
                 <name>saml.keystorePath</name>
                 <value>/tmp/samlKeystore.jks</value>
